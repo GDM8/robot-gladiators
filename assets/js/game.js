@@ -17,9 +17,8 @@ var enemyAttack = 12;
 // console.log(enemyNames.length);
 
 var fight = function(enemyNames) {
-    window.alert("Welcome to Robot Gladiators");
-
-    var promptFight = window.prompt("Would you like to FIGHT or SKIP this battle? Enter 'FIGHT' or 'SKIP' to choose.");
+    while(enemyHealth > 0) {
+      var promptFight = window.prompt("Would you like to FIGHT or SKIP this battle? Enter 'FIGHT' or 'SKIP' to choose.");
 
     // if player choses to fight, then fight
     if (promptFight === "fight" || promptFight === "FIGHT" || promptFight === "1") {
@@ -64,7 +63,10 @@ var fight = function(enemyNames) {
         fight();
     }
   }
+    }
 };
 for(var i = 0; i < enemyNames.length; i++) {
-  fight(enemyNames[i]);
+  var pickedEnemyName = enemyNames[i];
+  enemyHealth = 50;
+  fight(pickedEnemyName);
 }
