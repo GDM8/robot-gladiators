@@ -1,38 +1,46 @@
+// Game States
+// "WIN" - Player robot has defeated all enemy-robots
+//    * Fight all enemy-robots
+//    * Defeat each enemy-robot
+// "LOSE" - Player robot's health is zero or less
+
 var playerName = window.prompt("what is your robot's name?");
 var playerHealth = 100;
 var playerAttack = 10;
 var playerMoney = 10;
 
-console.log(playerName, playerAttack, playerHealth);
+// console.log(playerName, playerAttack, playerHealth);
 
-var enemyName = "Roberto";
+var enemyNames = ["Roberto", "Amy Android", "Robo Trumble"];
 var enemyHealth = 50;
 var enemyAttack = 12;
+// console.log(enemyNames.length);
 
-var fight = function() {
+var fight = function(enemyNames) {
     window.alert("Welcome to Robot Gladiators");
 
     var promptFight = window.prompt("Would you like to FIGHT or SKIP this battle? Enter 'FIGHT' or 'SKIP' to choose.");
 
     // if player choses to fight, then fight
-    if (promptFight === "fight" || promptFight === "FIGHT") {
+    if (promptFight === "fight" || promptFight === "FIGHT" || promptFight === "1") {
     // remove enemy's health by subtracting the amount set in the playerAttack variable
     enemyHealth = enemyHealth - playerAttack;
     console.log(
-      playerName + " attacked " + enemyName + ". " + enemyName + " now has " + enemyHealth + " health remaining."
+      playerName + " attacked " + enemyNames + ". " + enemyNames + " now has " + enemyHealth + " health remaining."
     );
-  
+    // console.log(enemyNames[3]);
+
     // check enemy's health
     if (enemyHealth <= 0) {
-      window.alert(enemyName + " has died!");
+      window.alert(enemyNames + " has died!");
     } else {
-      window.alert(enemyName + " still has " + enemyHealth + " health left.");
+      window.alert(enemyNames + " still has " + enemyHealth + " health left.");
     }
   
     // remove player's health by subtracting the amount set in the enemyAttack variable
     playerHealth = playerHealth - enemyAttack;
     console.log(
-      enemyName + " attacked " + playerName + ". " + playerName + " now has " + playerHealth + " health remaining."
+      enemyNames + " attacked " + playerName + ". " + playerName + " now has " + playerHealth + " health remaining."
     );
   
     // check player's health
@@ -57,5 +65,6 @@ var fight = function() {
     }
   }
 };
-
-fight();
+for(var i = 0; i < enemyNames.length; i++) {
+  fight(enemyNames[i]);
+}
